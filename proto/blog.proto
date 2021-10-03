@@ -1,0 +1,47 @@
+//Add wich sysntax is used, proto2 by default
+syntax = 'proto3';
+
+package blog;
+
+//Define the service
+service BlogPostService {
+	//Add methods to the services
+	//Here the communication type is the simplest 'Unary rpc'
+	rpc GetOne (GetOneRequest) returns (GetOneResponse);
+	rpc ListByQuery (ListByQueryRequest) returns (ListByQueryResponse);
+}
+
+//Describe the methods datastructure
+message GetOneRequest {
+	int32 id = 1;
+}
+
+message GetOneResponse {
+	string title = 1;
+	string content = 2;
+	Author author = 3;
+}
+
+message Author {
+	string first_name = 1;
+	string last_name = 2;
+}
+
+message ListByQueryRequest {
+	int32 page = 1;
+	string query = 2;
+}
+
+message ListByQueryResponse {
+	repeated ListItem posts = 1;
+}
+
+message ListItem {
+	string title = 1;
+  string description = 2;
+	Author author = 3;
+}
+
+//language specific option
+option go_package = "github.com/repo/demo/go/blog";
+
