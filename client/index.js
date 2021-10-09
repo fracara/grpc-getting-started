@@ -21,7 +21,20 @@ function main() {
 
 function getOneRequestHandler(err, response) {
     if (response) {
-        console.log(response.getAuthor().getFirstName())
+        let author = {
+            firstName: response.getAuthor().getFirstName(),
+            lastName: response.getAuthor().getLastName()
+        }
+
+        let post = {
+            title: response.getPost().getTitle(),
+            description: response.getPost().getDescription(),
+            content: response.getPost().getContent(),
+            tags: response.getPost().getTagsList()
+        }
+
+        console.log(author);
+        console.log(post);
     }
 }
 
