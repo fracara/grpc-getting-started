@@ -4,10 +4,9 @@ from proto_build import blog_pb2_grpc
 from blog import BlogPostUseCase
 
 def server() -> None:
+    # Create Grpc Server
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     try:
-        # Create Grpc Server
-
         # Add Implementation for BlogPostService
         blog_pb2_grpc.add_BlogPostServiceServicer_to_server(
                 servicer=BlogPostUseCase(), 
