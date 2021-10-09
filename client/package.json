@@ -1,4 +1,10 @@
 {
+    "name": "client",
+    "version": "1.0.0",
+    "description": "blog post gRPC client",
+    "main": "index.js",
+    "author": "Frank Cara",
+    "license": "MIT",
     "scripts": {
         "start": "node index.js"
     },
