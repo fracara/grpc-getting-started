@@ -4,8 +4,13 @@ from proto_build import blog_pb2_grpc
 from blog import BlogPostUseCase
 
 def server() -> None:
+    # Create Grpc Server
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+
+    # Add Implementation for BlogPostService
     blog_pb2_grpc.add_BlogPostServiceServicer_to_server(servicer=BlogPostUseCase(), server=server)
+    
+    # Intitialize and start the server
     server.add_insecure_port('[::]:50051')
     server.start()
     print('Listening on Port 50051')
