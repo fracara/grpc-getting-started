@@ -17,9 +17,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='blog.proto',
   package='blog',
   syntax='proto3',
-  serialized_options=b'Z\034github.com/repo/demo/go/blog',
+  serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\nblog.proto\x12\x04\x62log\"\x1b\n\rGetOneRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"N\n\x0eGetOneResponse\x12\r\n\x05title\x18\x01 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\x12\x1c\n\x06\x61uthor\x18\x03 \x01(\x0b\x32\x0c.blog.Author\"/\n\x06\x41uthor\x12\x12\n\nfirst_name\x18\x01 \x01(\t\x12\x11\n\tlast_name\x18\x02 \x01(\t\"1\n\x12ListByQueryRequest\x12\x0c\n\x04page\x18\x01 \x01(\x05\x12\r\n\x05query\x18\x02 \x01(\t\"4\n\x13ListByQueryResponse\x12\x1d\n\x05posts\x18\x01 \x03(\x0b\x32\x0e.blog.ListItem\"L\n\x08ListItem\x12\r\n\x05title\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12\x1c\n\x06\x61uthor\x18\x03 \x01(\x0b\x32\x0c.blog.Author2\x8a\x01\n\x0f\x42logPostService\x12\x33\n\x06GetOne\x12\x13.blog.GetOneRequest\x1a\x14.blog.GetOneResponse\x12\x42\n\x0bListByQuery\x12\x18.blog.ListByQueryRequest\x1a\x19.blog.ListByQueryResponseB\x1eZ\x1cgithub.com/repo/demo/go/blogb\x06proto3'
+  serialized_pb=b'\n\nblog.proto\x12\x04\x62log\" \n\rGetOneRequest\x12\x0f\n\x07post_id\x18\x01 \x01(\x05\"L\n\x0eGetOneResponse\x12\x1c\n\x04post\x18\x01 \x01(\x0b\x32\x0e.blog.BlogPost\x12\x1c\n\x06\x61uthor\x18\x02 \x01(\x0b\x32\x0c.blog.Author\"M\n\x08\x42logPost\x12\r\n\x05title\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x03 \x01(\t\x12\x0c\n\x04tags\x18\x04 \x03(\t\"/\n\x06\x41uthor\x12\x12\n\nfirst_name\x18\x01 \x01(\t\x12\x11\n\tlast_name\x18\x02 \x01(\t2F\n\x0f\x42logPostService\x12\x33\n\x06GetOne\x12\x13.blog.GetOneRequest\x1a\x14.blog.GetOneResponseb\x06proto3'
 )
 
 
@@ -34,7 +34,7 @@ _GETONEREQUEST = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='blog.GetOneRequest.id', index=0,
+      name='post_id', full_name='blog.GetOneRequest.post_id', index=0,
       number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -53,7 +53,7 @@ _GETONEREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=20,
-  serialized_end=47,
+  serialized_end=52,
 )
 
 
@@ -66,22 +66,15 @@ _GETONERESPONSE = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='title', full_name='blog.GetOneResponse.title', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      name='post', full_name='blog.GetOneResponse.post', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='content', full_name='blog.GetOneResponse.content', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='author', full_name='blog.GetOneResponse.author', index=2,
-      number=3, type=11, cpp_type=10, label=1,
+      name='author', full_name='blog.GetOneResponse.author', index=1,
+      number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -98,8 +91,61 @@ _GETONERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=49,
-  serialized_end=127,
+  serialized_start=54,
+  serialized_end=130,
+)
+
+
+_BLOGPOST = _descriptor.Descriptor(
+  name='BlogPost',
+  full_name='blog.BlogPost',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='title', full_name='blog.BlogPost.title', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='description', full_name='blog.BlogPost.description', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='content', full_name='blog.BlogPost.content', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='tags', full_name='blog.BlogPost.tags', index=3,
+      number=4, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=132,
+  serialized_end=209,
 )
 
 
@@ -137,136 +183,16 @@ _AUTHOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=129,
-  serialized_end=176,
+  serialized_start=211,
+  serialized_end=258,
 )
 
-
-_LISTBYQUERYREQUEST = _descriptor.Descriptor(
-  name='ListByQueryRequest',
-  full_name='blog.ListByQueryRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='page', full_name='blog.ListByQueryRequest.page', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='query', full_name='blog.ListByQueryRequest.query', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=178,
-  serialized_end=227,
-)
-
-
-_LISTBYQUERYRESPONSE = _descriptor.Descriptor(
-  name='ListByQueryResponse',
-  full_name='blog.ListByQueryResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='posts', full_name='blog.ListByQueryResponse.posts', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=229,
-  serialized_end=281,
-)
-
-
-_LISTITEM = _descriptor.Descriptor(
-  name='ListItem',
-  full_name='blog.ListItem',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='title', full_name='blog.ListItem.title', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='description', full_name='blog.ListItem.description', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='author', full_name='blog.ListItem.author', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=283,
-  serialized_end=359,
-)
-
+_GETONERESPONSE.fields_by_name['post'].message_type = _BLOGPOST
 _GETONERESPONSE.fields_by_name['author'].message_type = _AUTHOR
-_LISTBYQUERYRESPONSE.fields_by_name['posts'].message_type = _LISTITEM
-_LISTITEM.fields_by_name['author'].message_type = _AUTHOR
 DESCRIPTOR.message_types_by_name['GetOneRequest'] = _GETONEREQUEST
 DESCRIPTOR.message_types_by_name['GetOneResponse'] = _GETONERESPONSE
+DESCRIPTOR.message_types_by_name['BlogPost'] = _BLOGPOST
 DESCRIPTOR.message_types_by_name['Author'] = _AUTHOR
-DESCRIPTOR.message_types_by_name['ListByQueryRequest'] = _LISTBYQUERYREQUEST
-DESCRIPTOR.message_types_by_name['ListByQueryResponse'] = _LISTBYQUERYRESPONSE
-DESCRIPTOR.message_types_by_name['ListItem'] = _LISTITEM
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 GetOneRequest = _reflection.GeneratedProtocolMessageType('GetOneRequest', (_message.Message,), {
@@ -283,6 +209,13 @@ GetOneResponse = _reflection.GeneratedProtocolMessageType('GetOneResponse', (_me
   })
 _sym_db.RegisterMessage(GetOneResponse)
 
+BlogPost = _reflection.GeneratedProtocolMessageType('BlogPost', (_message.Message,), {
+  'DESCRIPTOR' : _BLOGPOST,
+  '__module__' : 'blog_pb2'
+  # @@protoc_insertion_point(class_scope:blog.BlogPost)
+  })
+_sym_db.RegisterMessage(BlogPost)
+
 Author = _reflection.GeneratedProtocolMessageType('Author', (_message.Message,), {
   'DESCRIPTOR' : _AUTHOR,
   '__module__' : 'blog_pb2'
@@ -290,29 +223,7 @@ Author = _reflection.GeneratedProtocolMessageType('Author', (_message.Message,),
   })
 _sym_db.RegisterMessage(Author)
 
-ListByQueryRequest = _reflection.GeneratedProtocolMessageType('ListByQueryRequest', (_message.Message,), {
-  'DESCRIPTOR' : _LISTBYQUERYREQUEST,
-  '__module__' : 'blog_pb2'
-  # @@protoc_insertion_point(class_scope:blog.ListByQueryRequest)
-  })
-_sym_db.RegisterMessage(ListByQueryRequest)
 
-ListByQueryResponse = _reflection.GeneratedProtocolMessageType('ListByQueryResponse', (_message.Message,), {
-  'DESCRIPTOR' : _LISTBYQUERYRESPONSE,
-  '__module__' : 'blog_pb2'
-  # @@protoc_insertion_point(class_scope:blog.ListByQueryResponse)
-  })
-_sym_db.RegisterMessage(ListByQueryResponse)
-
-ListItem = _reflection.GeneratedProtocolMessageType('ListItem', (_message.Message,), {
-  'DESCRIPTOR' : _LISTITEM,
-  '__module__' : 'blog_pb2'
-  # @@protoc_insertion_point(class_scope:blog.ListItem)
-  })
-_sym_db.RegisterMessage(ListItem)
-
-
-DESCRIPTOR._options = None
 
 _BLOGPOSTSERVICE = _descriptor.ServiceDescriptor(
   name='BlogPostService',
@@ -321,8 +232,8 @@ _BLOGPOSTSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=362,
-  serialized_end=500,
+  serialized_start=260,
+  serialized_end=330,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetOne',
@@ -331,16 +242,6 @@ _BLOGPOSTSERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_GETONEREQUEST,
     output_type=_GETONERESPONSE,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-  _descriptor.MethodDescriptor(
-    name='ListByQuery',
-    full_name='blog.BlogPostService.ListByQuery',
-    index=1,
-    containing_service=None,
-    input_type=_LISTBYQUERYREQUEST,
-    output_type=_LISTBYQUERYRESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
